@@ -30,6 +30,7 @@ class CityMetaBox {
             <label for="city_longitude">Longitude:</label>
             <input type="text" id="city_longitude" name="city_longitude" value="<?php echo esc_attr($longitude); ?>" />
         </p>
+        <div id="auto-fill" class="button button-primary button-large">Fill Coordinates Automatically</div>
         <?php
     }
 

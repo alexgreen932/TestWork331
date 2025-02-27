@@ -18,3 +18,7 @@ dist
 composer.json
 composer.lock
 
+package.json
+webpack.config.js
+
+TestWork331.code-workspace

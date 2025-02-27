@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="../../public/assets/images/favicon.png" />
+    <link rel="stylesheet" href="../../public/assets/css/all.min.css" />
+    <link rel="stylesheet" href="http://magic.loc/wp-content/themes/magic-jet/assets/css/jet.min.css">
+</head>
+
+<body>
+    <ul class="city-list">
+        <li><label>London</label> <span data-city="its_city"></span></li>
+        <li><label>Amsterdam</label> <span data-city="Amsterdam"></span></li>
+    </ul>
+
+    <hr>
+    <hr>
+    <div id="titlewrap">
+        <label class="screen-reader-text" id="title-prompt-text" for="title">Add title</label>
+        <input type="text" name="post_title" size="30" value="Amsterdam" id="title" spellcheck="true"
+            autocomplete="off">
+    </div>
+
+    <div class="inside">
+        <input type="hidden" id="city_location_nonce_field" name="city_location_nonce_field" value="3896a3aa35"><input
+            type="hidden" name="_wp_http_referer" value="/wp-admin/post.php?post=8&amp;action=edit">
+        <p>
+            <label for="city_latitude">Latitude:</label>
+            <input type="text" id="city_latitude" name="city_latitude" value="">
+        </p>
+        <p>
+            <label for="city_longitude">Longitude:</label>
+            <input type="text" id="city_longitude" name="city_longitude" value="">
+        </p>
+        <div id="auto-fill" class="button button-primary button-large">Fill Coordinates Automatically</div>
+    </div>
+
+    <script src="script.js" type="module"></script>
+</body>
+
+</html>

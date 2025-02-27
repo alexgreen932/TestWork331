@@ -8,8 +8,8 @@
  * @since 1.0.0
  */
  
-// define( 'MAGICJET_VERSION', wp_get_theme()->get( 'Version' ) );
-// define( 'SRC', get_template_directory_uri() . '/inc/app/src/' );
+define( 'MAGICJET_VERSION', wp_get_theme()->get( 'Version' ) );
+define( 'ASSETS', get_stylesheet_directory_uri() . '/assets/' );//child theme assets directory
 
 /**
  * Debugging function. For development only //todo rm on prod
@@ -59,6 +59,27 @@ if ( ! function_exists( 'jet_autoloader' ) ) {
 
 // load classes from a necessary directory(s)
 jet_autoloader( 'app' );
+
+//unque styles
+function magicjet_enqueue_styles() {
+
+	wp_enqueue_style(
+		'jet',
+		ASSETS . 'css/style.min.css',
+		array(),
+		MAGICJET_VERSION // Replace with your version if needed
+	);
+    
+    wp_enqueue_script(
+		'jet',
+		ASSETS . 'js/script.min.js',
+		array(),
+		MAGICJET_VERSION,
+		true
+	);
+}
+
+add_action( 'wp_enqueue_scripts','magicjet_enqueue_styles' );
 
 
 

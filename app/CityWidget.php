@@ -24,7 +24,8 @@ class CityWidget extends WP_Widget {
 
         echo $args['before_widget'];
         echo $args['before_title'] . esc_html($city_name) . $args['after_title'];
-        echo '<p>Temperature: ' . esc_html($weather) . '°C</p>';
+        //echo '<p>Temperature: ' . esc_html($weather) . '°C</p>';
+        echo '<span data-city="' . esc_attr($city_name) . '"></span>';
         echo $args['after_widget'];
     }
 
