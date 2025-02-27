@@ -35,22 +35,31 @@ class CityPostType {
         );
 
         $args = array(
-            'labels'          => $labels,
-            'public'          => true,
-            'show_ui'         => true,
-            'menu_position'   => 20,
-            'menu_icon'       => 'dashicons-location',
-            'supports'        => array( 'title' ),
-            'has_archive'     => true,
-            'rewrite'         => array(
+            'labels'             => $labels,
+            'public'             => true,
+            'publicly_queryable' => true, // ✅ Allows single city pages to work
+            'show_ui'            => true,
+            'show_in_menu'       => true,
+            'query_var'          => true, // ✅ Enables ?city=london queries
+            'menu_position'      => 20,
+            'menu_icon'          => 'dashicons-location',
+            'supports'           => array( 'title' ),
+            'has_archive'        => true,
+            'rewrite'            => array(
                 'slug'       => 'cities',
                 'with_front' => true,
             ),
             'capability_type' => 'post',
-            'show_in_rest'    => true, // ✅ Enable REST API for this post type
-            'rest_base'       => 'cities', // ✅ Set the REST API base endpoint (optional)
+            'show_in_rest'    => true, // ✅ Enables REST API for this post type
+            'rest_base'       => 'cities', // ✅ Custom endpoint for REST API
         );
 
         register_post_type( 'city', $args );
+
+        // Flush permalinks when the post type is registered
+        add_action( 'init', function() {
+            flush_rewrite_rules();
+        }, 20 );
     }
 }
+
