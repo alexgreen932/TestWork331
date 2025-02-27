@@ -7,24 +7,9 @@
  * @package magic-jet
  * @since 1.0.0
  */
- 
+
 define( 'MAGICJET_VERSION', wp_get_theme()->get( 'Version' ) );
-define( 'ASSETS', get_stylesheet_directory_uri() . '/assets/' );//child theme assets directory
-
-/**
- * Debugging function. For development only //todo rm on prod
- */
-if ( ! function_exists( 'dd' ) ) {
-	function dd( $var, $notdie = 0 ) {
-		echo '<pre>';
-		var_dump( $var );
-		echo '</pre>';
-		if ( $notdie == 0 ) {
-			die();
-		}
-	}
-}
-
+define( 'ASSETS', get_stylesheet_directory_uri() . '/assets/' );// child theme assets directory
 
 if ( ! function_exists( 'jet_autoloader' ) ) {
 	/**
@@ -33,10 +18,10 @@ if ( ! function_exists( 'jet_autoloader' ) ) {
 	 * @param string $relative_path Directory path relative to theme root.
 	 */
 	function jet_autoloader( $relative_path ) {
-		$paths = [
+		$paths = array(
 			get_stylesheet_directory() . '/' . trim( $relative_path, '/' ),
 			get_template_directory() . '/' . trim( $relative_path, '/' ),
-		];
+		);
 
 		foreach ( $paths as $path ) {
 			if ( ! is_dir( $path ) ) {
@@ -60,7 +45,7 @@ if ( ! function_exists( 'jet_autoloader' ) ) {
 // load classes from a necessary directory(s)
 jet_autoloader( 'app' );
 
-//unque styles
+// unque styles
 function magicjet_enqueue_styles() {
 
 	wp_enqueue_style(
@@ -69,8 +54,8 @@ function magicjet_enqueue_styles() {
 		array(),
 		MAGICJET_VERSION // Replace with your version if needed
 	);
-    
-    wp_enqueue_script(
+
+	wp_enqueue_script(
 		'jet',
 		ASSETS . 'js/script.min.js',
 		array(),
@@ -79,10 +64,4 @@ function magicjet_enqueue_styles() {
 	);
 }
 
-add_action( 'wp_enqueue_scripts','magicjet_enqueue_styles' );
-
-
-
-
-
-
+add_action( 'wp_enqueue_scripts', 'magicjet_enqueue_styles' );
